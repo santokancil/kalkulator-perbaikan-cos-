@@ -1,0 +1,264 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Aplikasi Analisis Perbaikan Faktor Daya</title>
+
+<style>
+
+body{
+font-family:'Segoe UI', Arial;
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+margin:0;
+padding:0;
+color:#333;
+}
+
+/* watermark logo */
+
+body::before{
+content:"";
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:500px;
+height:500px;
+background:url("logo_uny.png") no-repeat center;
+background-size:contain;
+opacity:0.06;
+z-index:0;
+}
+
+/* HEADER */
+
+.header{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:20px;
+background:rgba(255,255,255,0.1);
+padding:20px;
+color:white;
+}
+
+.header img{
+height:60px;
+}
+
+.header-text{
+text-align:left;
+}
+
+.header-text h2{
+margin:0;
+font-size:22px;
+}
+
+.header-text p{
+margin:0;
+font-size:14px;
+}
+
+/* TITLE */
+
+.title{
+text-align:center;
+color:white;
+margin-top:20px;
+}
+
+.title h1{
+margin:0;
+font-size:34px;
+}
+
+/* DASHBOARD */
+
+.container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+margin-top:30px;
+padding-bottom:40px;
+position:relative;
+z-index:1;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:12px;
+width:340px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card h3{
+margin-top:0;
+color:#2a5298;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:8px;
+margin-bottom:12px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:14px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#2a5298;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-size:15px;
+}
+
+button:hover{
+background:#1e3c72;
+}
+
+.result{
+margin-top:12px;
+background:#f4f6f9;
+padding:12px;
+border-radius:6px;
+font-size:15px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+color:white;
+padding:20px;
+font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<img src="logo_uny.png">
+
+<div class="header-text">
+<h2>Universitas Negeri Yogyakarta</h2>
+<p>Program Studi Pendidikan Teknik Elektro</p>
+</div>
+
+</div>
+
+<div class="title">
+<h1>Kalkulator Perbaikan Faktor Daya</h1>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h3>Input Data Pengukuran</h3>
+
+<input type="number" step="any" id="volt" placeholder="Tegangan (Volt)">
+<input type="number" step="any" id="ampere" placeholder="Arus (Ampere)">
+<input type="number" step="any" id="watt" placeholder="Daya Aktif (Watt)">
+
+<button onclick="hitung()">Hitung Cos Phi</button>
+
+<div class="result" id="hasil"></div>
+
+</div>
+
+<div class="card">
+
+<h3>Simulasi Kapasitor</h3>
+
+<input type="number" step="any" id="kapasitor" placeholder="Nilai Kapasitor (µF)">
+
+<button onclick="simulasi()">Hitung Setelah Perbaikan</button>
+
+<div class="result" id="hasil2"></div>
+
+</div>
+
+</div>
+
+<footer>
+Aplikasi Analisis Perbaikan Faktor Daya <br>
+Pendidikan Teknik Elektro • Universitas Negeri Yogyakarta <br>
+NIM : 2250144001
+</footer>
+
+<script>
+
+let P,V,I,Qawal;
+
+function hitung(){
+
+V=parseFloat(document.getElementById("volt").value);
+I=parseFloat(document.getElementById("ampere").value);
+P=parseFloat(document.getElementById("watt").value);
+
+let VA=V*I;
+
+if(P>VA){
+document.getElementById("hasil").innerHTML="Data tidak valid (Watt > VA)";
+return;
+}
+
+let cosphi=P/VA;
+
+let phi=Math.acos(cosphi);
+
+Qawal=P*Math.tan(phi);
+
+let phi2=Math.acos(0.95);
+
+let Qc=P*(Math.tan(phi)-Math.tan(phi2));
+
+let C=Qc/(2*Math.PI*50*V*V);
+
+let micro=C*1000000;
+
+document.getElementById("hasil").innerHTML=
+
+"VA = "+VA.toFixed(2)+" VA <br>"+
+"Cos φ awal = "+cosphi.toFixed(3)+"<br>"+
+"Kapasitor teoritis = "+micro.toFixed(2)+" µF";
+
+}
+
+function simulasi(){
+
+let Cinput=parseFloat(document.getElementById("kapasitor").value);
+
+let C=Cinput/1000000;
+
+let Qc=2*Math.PI*50*V*V*C;
+
+let Qbaru=Qawal-Qc;
+
+let Sbaru=Math.sqrt(P*P + Qbaru*Qbaru);
+
+let cosphiBaru=P/Sbaru;
+
+document.getElementById("hasil2").innerHTML=
+
+"Cos φ setelah perbaikan = "+cosphiBaru.toFixed(3);
+
+}
+
+</script>
+
+</body>
+</html>
+```
