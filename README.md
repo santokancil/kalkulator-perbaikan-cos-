@@ -1,27 +1,55 @@
 # Kalkulator Perbaikan Faktor Daya (Cos φ)
 
-Aplikasi berbasis web untuk melakukan analisis dan simulasi perbaikan faktor daya (cos φ) menggunakan kapasitor.
+Aplikasi berbasis web untuk analisis dan simulasi perbaikan faktor daya (cos φ) menggunakan kapasitor.
 
-Aplikasi ini dibuat sebagai bagian dari penelitian skripsi pada Program Studi Pendidikan Teknik Elektro Universitas Negeri Yogyakarta.
+Aplikasi ini dikembangkan sebagai bagian dari penelitian skripsi pada Program Studi Pendidikan Teknik Elektro, Universitas Negeri Yogyakarta.
 
-## Informasi Mahasiswa
+## Informasi Peneliti
 
-Nama        : (Isi Nama Kamu)  
+Nama        : Khusnullissanto  
 NIM         : 22501244001  
 Program Studi : Pendidikan Teknik Elektro  
-Universitas : Universitas Negeri Yogyakarta
+Universitas : Universitas Negeri Yogyakarta  
 
-## Deskripsi Aplikasi
+## Latar Belakang
 
-Aplikasi ini digunakan untuk:
+Faktor daya merupakan salah satu parameter penting dalam sistem tenaga listrik. Faktor daya yang rendah dapat menyebabkan peningkatan arus listrik, kerugian daya, serta penurunan efisiensi sistem.
 
-- Menghitung nilai daya semu (VA)
-- Menghitung nilai faktor daya awal (Cos φ)
-- Menentukan kebutuhan kapasitor untuk perbaikan faktor daya
-- Melakukan simulasi penggunaan kapasitor yang tersedia di pasaran
-- Menampilkan nilai cos φ setelah dilakukan perbaikan
+Untuk mengatasi permasalahan tersebut, diperlukan metode perbaikan faktor daya menggunakan kapasitor. Oleh karena itu, penelitian ini mengembangkan sebuah **trainer perbaikan faktor daya** yang dilengkapi dengan sistem kontrol dan aplikasi analisis berbasis web.
 
-Aplikasi ini dapat digunakan sebagai media pembelajaran pada mata kuliah yang membahas perbaikan faktor daya pada sistem tenaga listrik.
+## Tujuan Penelitian
+
+Penelitian ini bertujuan untuk:
+
+1. Mengembangkan **trainer perbaikan faktor daya** sebagai media pembelajaran pada bidang sistem tenaga listrik.
+2. Mengembangkan **sistem kontrol berbasis ESP32** untuk pengoperasian trainer dalam mode manual dan otomatis.
+3. Mengembangkan **aplikasi berbasis web** untuk melakukan analisis dan simulasi perbaikan faktor daya.
+4. Mengintegrasikan trainer dengan aplikasi analisis sehingga dapat digunakan sebagai media praktik dan pembelajaran bagi mahasiswa.
+
+## Komponen Sistem
+
+Sistem yang dikembangkan dalam penelitian ini terdiri dari beberapa bagian utama:
+
+### 1. Trainer Perbaikan Faktor Daya
+
+Trainer digunakan sebagai media praktik untuk melakukan percobaan perbaikan faktor daya menggunakan kapasitor.
+
+### 2. Sistem Kontrol ESP32
+
+ESP32 digunakan sebagai pengendali sistem dengan dua mode operasi:
+
+- **Mode Manual** → Pengguna dapat mengaktifkan kapasitor secara manual
+- **Mode Otomatis** → Sistem akan mengatur kapasitor secara otomatis berdasarkan kondisi faktor daya
+
+### 3. Aplikasi Analisis Berbasis Web
+
+Aplikasi web digunakan untuk:
+
+- Menghitung daya semu (VA)
+- Menghitung nilai cos φ awal
+- Menentukan kebutuhan kapasitor
+- Melakukan simulasi penggunaan kapasitor
+- Menampilkan hasil perbaikan faktor daya
 
 ## Input Data
 
@@ -31,36 +59,34 @@ Pengguna memasukkan data pengukuran berupa:
 - Arus (Ampere)
 - Daya Aktif (Watt)
 
-## Output Perhitungan
+## Output Sistem
 
-Aplikasi akan menampilkan:
+Aplikasi akan menghasilkan:
 
-- Daya semu (VA)
+- Daya Semu (VA)
 - Nilai Cos φ awal
-- Nilai kapasitor teoritis yang dibutuhkan
-- Nilai Cos φ setelah simulasi kapasitor
+- Nilai kapasitor teoritis
+- Nilai Cos φ setelah perbaikan
 
 ## Teknologi yang Digunakan
 
-Aplikasi ini dikembangkan menggunakan:
+Penelitian ini menggunakan beberapa teknologi berikut:
 
 - HTML
 - CSS
 - JavaScript
+- ESP32
+- Sistem kontrol kapasitor
 
-## Cara Menggunakan Aplikasi
+## Manfaat Penelitian
 
-1. Masukkan nilai tegangan (Volt)
-2. Masukkan nilai arus (Ampere)
-3. Masukkan daya aktif (Watt)
-4. Klik tombol **Hitung Cos Phi**
-5. Masukkan nilai kapasitor yang ingin disimulasikan
-6. Klik **Hitung Setelah Perbaikan**
+Hasil penelitian ini diharapkan dapat:
 
-## Tujuan Penelitian
-
-Penelitian ini bertujuan untuk mengembangkan media berbasis web yang dapat membantu dalam analisis dan pembelajaran mengenai perbaikan faktor daya pada sistem kelistrikan.
+- Menjadi media pembelajaran pada mata kuliah sistem tenaga listrik
+- Membantu mahasiswa memahami konsep faktor daya
+- Memberikan pengalaman praktik langsung melalui trainer
+- Mengintegrasikan pembelajaran teori dan praktik
 
 ## Akses Aplikasi
 
-Aplikasi dapat diakses melalui GitHub Pages.
+Aplikasi dapat diakses melalui GitHub Pages setelah sistem di-deploy.
